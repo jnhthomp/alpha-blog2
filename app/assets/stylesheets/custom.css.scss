@@ -37,6 +37,11 @@
   border: none;
 }
 
+.btn-success {
+  background-color: #018786;
+  border-color: #018786;
+}
+
 html,
 body {
   height: 100%;
@@ -49,4 +54,21 @@ body {
 
 #sticky-footer {
   flex-shrink: none;
+}
+
+#card-title-text {
+  color: #018786;
+}
+
+.card-body {
+  background-color: #373b41;
+  color: #d3d3d3;
+  border: none;
+}
+
+.card-header,
+.card-footer {
+  background-color: #43484f;
+  color: #d3d3d3;
+  border: none;
 }
