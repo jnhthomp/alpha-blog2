@@ -31,15 +31,24 @@
   border: none;
 }
 
+.btn-primary:hover {
+  background-color: #a560fb;
+}
+
 .btn-outline-success {
   background-color: #018786 !important;
-  color:  #6200EE;
+  color:  #d3d3d3;
   border: none;
 }
 
 .btn-success {
   background-color: #018786;
   border-color: #018786;
+}
+
+.btn-success:hover{
+  background-color: #01605f;
+  border: none;
 }
 
 html,
@@ -71,4 +80,17 @@ body {
   background-color: #43484f;
   color: #d3d3d3;
   border: none;
+}
+
+#btn-submit-form {
+  margin-right: 20px;
+}
+
+#btn-cancel-form {
+  margin-left: 20px;
+}
+
+#create-article-form {
+  background-color: #BB86FC;
+  color: white;
 }
