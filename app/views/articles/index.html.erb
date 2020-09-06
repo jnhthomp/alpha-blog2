@@ -2,22 +2,4 @@
 
 <p class="text-center"><%= link_to 'Create New Article', new_article_path, class: "btn btn-success mt-2 mb-2"%></p>
 
-<% @articles.each do |article| %>
-  <div class="row justify-content-md-center mt-4">
-    <div class="col-8">
-      <div class="card text-center shadow mb-5 rounded">
-        <h5 class="card-header font-italic">by <%= article.user.username if article.user%></h5>
-        <div class="card-body">
-          <h5 class="card-title"><%= link_to article.title, article_path(article), id: "card-title-text" %></h5>
-          <p class="card-text"><%= truncate(article.description, length: 100) %></p>
-          <%= link_to "View", article_path(article), class: "btn btn-primary"%>
-          <%= link_to "Edit", edit_article_path(article), class: "btn btn-success" %>
-          <%= link_to "Delete", article_path(article), class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure you want to delete this article?"} %>
-        </div>
-        <div class="card-footer text-muted">
-          <small>Created <%= time_ago_in_words(article.created_at) %> ago, edited <%= time_ago_in_words(article.updated_at) %> ago</small>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
+<%= render 'article', obj: @articles %>
