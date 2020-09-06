@@ -26,7 +26,7 @@
 
         
         <div class="form-group row justify-content-center">
-          <%= f.submit "Sign Up", class: "btn btn-success", id: "btn-submit-form" %>
+          <%= f.submit(@user.new_record? ? "Sign Up" : "Update Profile", class: "btn btn-success", id: "btn-submit-form") %>
           <%= link_to 'Cancel and Return to Articles Listing', articles_path, class: "btn btn-danger", id: "btn-cancel form" %>
         </div>
       <% end %>
