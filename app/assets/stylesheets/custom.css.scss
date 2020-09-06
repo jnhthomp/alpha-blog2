@@ -1,87 +1,81 @@
 @import 'bootstrap/dist/css/bootstrap';
 
-.nav-link {
-  color: #03DAC6 !important;
-}
 
-#logo {
-  float: left;
-  font-size: 1.7em;
-  color: #BB86FC !important;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  font-weight: bold;
-}
 
-#home-container {
-  margin-top: 25px;
-}
-
-.jumbotron {
-  /*image from: https://unsplash.com/photos/52kpeE5DIfA*/
-  background-image: asset-url('jumbotronbg.jpg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  text-shadow: -1px 0 #373b41, 0 1px #373b41, 1px 0 #373b41, 0 -1px #373b41;
-}
-
-.btn-primary {
-  background-color: #BB86FC;
-  border: none;
-}
-
-.btn-primary:hover {
-  background-color: #a560fb;
-}
-
-.btn-outline-success {
-  background-color: #018786 !important;
-  color:  #d3d3d3;
-  border: none;
-}
-
-.btn-success {
-  background-color: #018786;
-  border-color: #018786;
-}
-
-.btn-success:hover{
-  background-color: #01605f;
-  border: none;
-}
-
+// General
 html,
 body {
   height: 100%;
 }
 
+h1 {
+  color: #bcbfc1;
+}
+
 #page-content {
   flex: 1 0 auto;
-  background-color: #d3d3d3;
+  background-color: #1b2327;
 }
 
+// End General
+
+
+
+// Navbar 
+#nav-search{
+  background-color: #1b2327;
+  border-color: #1f292e;
+}
+
+#logo {
+  float: left;
+  font-size: 1.7em;
+  color: #418e86 !important;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+.navbar-dark {
+  background-color: #1f292e !important;
+}
+
+.nav-link {
+  color: #bcbfc1 !important;
+}
+
+.dropdown-menu {
+  background-color: #1f292e;
+}
+
+.dropdown-item{
+  color:  #bcbfc1;
+}
+
+.dropdown-item:hover{
+  background-color: #27333a;
+  color: #418e86;
+}
+
+.dropdown-divider{
+  color:  #418e86 !important;
+}
+
+// End Navbar
+
+
+
+// Footer
 #sticky-footer {
   flex-shrink: none;
+  background-color: #1f292e !important;
 }
 
-#card-title-text {
-  color: #018786;
-}
+// End Footer
 
-.card-body {
-  background-color: #373b41;
-  color: #d3d3d3;
-  border: none;
-}
 
-.card-header,
-.card-footer {
-  background-color: #43484f;
-  color: #d3d3d3;
-  border: none;
-}
 
+// Buttons
 #btn-submit-form {
   margin-right: 20px;
 }
@@ -90,7 +84,109 @@ body {
   margin-left: 20px;
 }
 
-#create-article-form {
-  background-color: #BB86FC;
-  color: white;
+.btn-danger{
+  color:  #bcbfc1;
 }
+
+.btn-primary {
+  background-color: #6f4fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #7e4fff;
+}
+
+.btn-outline-success {
+  background-color: #418e86 !important;
+  color:  #bcbfc1;
+  border: none;
+}
+
+.btn-outline-success:hover {
+  background-color: #37988e !important;
+  color:  #3d4f5a;
+  border: none;
+}
+
+.btn-success {
+  background-color: #418e86;
+  color:  #bcbfc1;
+  border: none;
+}
+
+.btn-success:hover{
+  background-color: #37988e !important;
+  color:  #3d4f5a;
+  border: none;
+}
+
+// End buttons
+
+
+
+// Cards
+#card-title-text {
+  color: #018786;
+}
+
+.card{
+  border: none;
+}
+.card-body {
+  background-color: #1f292e;
+  color: #bcbfc1;
+  border: none;
+}
+
+.card-header,
+.card-footer {
+  background-color: #27333a;
+  color: #bcbfc1;
+}
+
+.card-header:first-child {
+  border: none;
+}
+
+// End Cards
+
+
+
+// Forms
+.general-form {
+  background-color: #1f292e !important;
+  color: #bcbfc1 !important;
+}
+
+.form-input, 
+.form-input:active,
+.form-input:focus {
+  background-color: #27333a;
+  border: none;
+  color: #bcbfc1;
+}
+
+// End Forms
+
+
+
+// Homepage
+#home-container {
+  margin-top: 25px;
+}
+
+.jumbotron {
+  // Image from: https://unsplash.com/photos/xApC8DIiD54
+  background-image: asset-url('jumbo.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-shadow: -1px 0 #373b41, 0 1px #373b41, 1px 0 #373b41, 0 -1px #373b41;
+}
+
+// End Homepage
+
+
+
+// Articles Index page
