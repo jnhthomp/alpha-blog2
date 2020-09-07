@@ -3,7 +3,9 @@
 <div class="row justify-content-md-center mt-4">
   <div class="col-8">
     <div class="card text-center shadow mb-5 bg-white rounded">
-      <h5 class="card-header font-italic">by <%= @article.user.username if @article.user%></h5>
+      <div class="card-header font-italic ">by <%= @article.user.username if @article.user%>
+        <%= link_to gravatar_for(@article.user, size: 60), user_path(@article.user) %>
+      </div>
       <div class="card-body">
         <div class="card-text"><%= simple_format(@article.description) %></div>
         <%= link_to "Edit", edit_article_path(@article), class: "btn btn-success" %>
