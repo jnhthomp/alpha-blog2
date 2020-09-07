@@ -11,10 +11,10 @@
           Articles
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Create New Article", new_article_path, class: "dropdown-item"  %>
-          <div class="dropdown-divider"></div>
           <%= link_to "View Articles", articles_path, class: "dropdown-item"  %>
           <%= link_to "View Users", users_path, class: "dropdown-item"  %>
+          <div class="dropdown-divider"></div>
+          <%= link_to "Create New Article", new_article_path, class: "dropdown-item"  %>
         </div>
       </li>
       <% if logged_in? %>
