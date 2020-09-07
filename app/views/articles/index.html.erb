@@ -2,4 +2,17 @@
 
 <p class="text-center"><%= link_to 'Create New Article', new_article_path, class: "btn btn-success mt-2 mb-2"%></p>
 
+
+<div class="container">
+  <div class="apple_pagination">
+      <%= will_paginate @articles, :container => false %>
+  </div>
+</div>
+
 <%= render 'article', obj: @articles %>
+
+<div class="container mb-4">
+  <div class="apple_pagination">
+      <%= will_paginate @articles, :container => false %>
+  </div>
+</div>
