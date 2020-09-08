@@ -27,7 +27,10 @@
         
         <div class="form-group row justify-content-center">
           <%= f.submit(@user.new_record? ? "Sign Up" : "Update Profile", class: "btn btn-success", id: "btn-submit-form") %>
-          <%= link_to 'Cancel and Return to Articles Listing', articles_path, class: "btn btn-danger", id: "btn-cancel form" %>
+          <%= link_to 'Cancel and Return to Articles Listing', articles_path, class: "btn btn-primary" %>
+          <% if logged_in? && @user == current_user %>
+            <%= link_to  'Delete Profile', user_path(current_user), class: "btn btn-danger", id: "btn-cancel-form", method: :delete, data: {confirm: "Are you sure you want to delete your account?"}%>  
+          <% end %>
         </div>
       <% end %>
     </div>
