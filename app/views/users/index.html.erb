@@ -1,10 +1,7 @@
 <h1 class="text-center mt-4">Users Listing Page</h1>
 
-
-<div class="container">
-  <div class="apple_pagination">
-      <%= will_paginate @users, :container => false %>
-  </div>
+<div class="apple_pagination container">
+    <%= will_paginate @users, :container => false %>
 </div>
 
 <% @users.each do |user| %>
@@ -17,7 +14,9 @@
             <%= link_to gravatar_for(user, size: 150), user_path(user) %></h5>
           <p class="card-text"><%= pluralize(user.articles.count, "article") %></p>
           <%= link_to "View Profile", user_path(user), class: "btn btn-primary"%>
-          <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-success" %>
+          <% if logged_in? && user == current_user %>
+            <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-success" %>
+          <% end %>
         </div>
         <div class="card-footer text-muted">
           <small>Joined <%= time_ago_in_words(user.created_at) %> ago.</small>
@@ -27,8 +26,6 @@
   </div>
 <% end %>
 
-<div class="container mb-4">
-  <div class="apple_pagination">
-      <%= will_paginate @users, :container => false %>
-  </div>
+<div class="apple_pagination container mb-4">
+    <%= will_paginate @users, :container => false %>
 </div>
