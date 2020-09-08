@@ -77,6 +77,23 @@ h2 {
 
 
 
+// Flash Messages
+.alert-danger {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+}
+
+.alert-success {
+  background-color: #418e86;
+  border: none;
+  color:  white;
+}
+
+// End Flash Messages
+
+
+
 // Footer
 #sticky-footer {
   flex-shrink: none;

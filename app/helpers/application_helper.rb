@@ -6,4 +6,15 @@ module ApplicationHelper
     gravatar_url = "https://www.gravatar.com/avatar/#{hash}?s=#{size}"
     image_tag(gravatar_url, alt: user.username, class: "rounded shadow mx-auto d-block mt-4")
   end
+
+  def bootstrap_class_for(flash_type)
+    case flash_type
+      when "alert"
+        "alert-danger"
+      when "notice"
+        "alert-success"
+      else
+        flash_type.to_s
+      end
+  end
 end
