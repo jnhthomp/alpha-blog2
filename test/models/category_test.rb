@@ -31,5 +31,4 @@ class Categorytest < ActiveSupport::TestCase
     assert_not @category.valid?
   end
 
-  # Add test "is lower case" when we start adding categories
 end
