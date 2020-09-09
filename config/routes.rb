@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   # Articles table - grants restful routes
   resources :articles
 
+  # Categories table - grants restful routes
+  resources :categories, except: [:destroy]
+
   # Users table - grants restful routes
   #   (except for new since that is handled by signup url)
   get 'signup', to: 'users#new'
@@ -16,4 +19,5 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+
 end
