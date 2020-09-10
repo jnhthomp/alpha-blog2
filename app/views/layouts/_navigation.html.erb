@@ -8,14 +8,18 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Articles
+          Browse Articles
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <%= link_to "View Articles", articles_path, class: "dropdown-item"  %>
+          <%= link_to "View Categories", categories_path, class: "dropdown-item" %>
           <%= link_to "View Users", users_path, class: "dropdown-item"  %>
           <% if logged_in? %>
             <div class="dropdown-divider"></div>
-            <%= link_to "Create New Article", new_article_path, class: "dropdown-item"  %>  
+            <%= link_to "Create New Article", new_article_path, class: "dropdown-item"  %>
+            <% if current_user.admin? %>
+              <%= link_to "Create New Category", new_category_path, class: "dropdown-item" %>
+            <% end %>
           <% end %>
         </div>
       </li>
