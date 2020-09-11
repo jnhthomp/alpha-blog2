@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :articles
 
   # Categories table - grants restful routes
-  resources :categories, except: [:destroy]
+  resources :categories
 
   # Users table - grants restful routes
   #   (except for new since that is handled by signup url)
