@@ -8,3 +8,5 @@
 * Add comments for everything so far
 * Update readme to document what is going on with the application
 * Add tests for User and Articles models, controllers, functions
+
+* Integrate ActionCable for a chat/messaging section
