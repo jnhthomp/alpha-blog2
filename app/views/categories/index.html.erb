@@ -1,20 +1,34 @@
+<%# Category index page header %>
 <h1 class="text-center mt-4">Categories</h1>
 
+<%# Pagination top (container used to center) %>
 <div class="container">
   <div class="apple_pagination">
       <%= will_paginate @categories, :container => false %>
   </div>
 </div>
 
+<%# Content to be displayed %>
 <% @categories.each do |category| %>
+  <%# Row for organization %>
   <div class="row justify-content-md-center mt-4">
+    <%# col to set width %>
     <div class="col-4">
+      <%# card bootstrap styling %>
       <div class="card text-center shadow rounded">
+        
+        <%# card body %>
         <div class="card-body">
+          <%# Card title (category name) %>
           <h5 class="card-title"><%= link_to category.name.capitalize, category_path(category), id: "card-title-text" %></h5>
+          <%# Card content (number of articles in the category) %>
           <p class="card-text"><%= pluralize(category.articles.count, "article") %></p>
         </div>
+
+        <%# Card footer %>
         <div class="card-footer text-muted">
+          <%# Show date that category was created and edited last as footer %>
+          <%# time_ago_in_words is used to make timestamps more readable %>
           <small>Created <%= time_ago_in_words(category.created_at) %> ago, edited <%= time_ago_in_words(category.updated_at) %> ago</small>
         </div>
       </div>
@@ -22,6 +36,7 @@
   </div>
 <% end %>
 
+<%# Pagination bottom (contianer used to center) %>
 <div class="container mb-4">
   <div class="apple_pagination">
       <%= will_paginate @categories, :container => false %>

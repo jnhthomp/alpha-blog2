@@ -1,11 +1,17 @@
+<%# Errors are passed in as obj: arguement when this partial is called %>
 <% if obj.errors.any? %>
+  <%# bootstrap for styling %>
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <%#  Start error message, display what the error is occuring on (ex: article or user)%>
     <h4 class="alert-heading">The following errors prevented the <%= obj.class.name.downcase %> from being saved</h4>
+    <%# add a small close button %>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
+    <%# Display each error message (will handle multiple) %>
     <ul>
       <% obj.errors.full_messages.each do |msg| %>
+        <%# individual message %>
         <li><%= msg %></li>
       <% end %>
     </ul>

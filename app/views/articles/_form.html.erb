@@ -1,40 +1,55 @@
+<%# Bootstrap class to helper center partial on the page %>
 <div class="container">
 
-
+  <%# Contain and center all content within partial %>
   <div class="row justify-content-center">
+    <%# Set width of form %>
     <div class="col-10">
+      <%# Display any errors attached to the current @article instance 
+          This will only display if @article has errors attached to it from a failed save %>
       <%= render 'shared/errors', obj: @article %>
+      <%# New form based on article model w/ bootstrap classes for styling %>
       <%= form_with(model: @article, class: "shadow p-3 mb-3 rounded general-form", local: true)  do |f| %>
+        
+        <%# Article title row %>
         <div class="form-group row">
+          <%# title label for input %>
           <%= f.label :title, class: "col-2 col-form-label" %>
+          <%# title input field %>
           <div class="col-10">
             <%= f.text_field :title, class: "form-control shadow rounded form-input", placeholder: "Title of article" %>
           </div>
         </div>
 
+        <%# Article description row %>
         <div class="form-group row">
+            <%# description label for input %>
             <%= f.label :description, class: "col-2 col-form-label" %>
+            <%# description input field %>
             <div class="col-10">
-            <%= f.text_area :description, rows: 10, class: "form-control shadow rounded form-input", placeholder: "Description of article" %>
+              <%= f.text_area :description, rows: 10, class: "form-control shadow rounded form-input", placeholder: "Description of article" %>
             </div>
         </div>
 
-        
+        <%# Article Category row %>
         <div class="form-group row">
+            <%# category label for selection field %>
             <%= f.label :category, class: "col-2 col-form-label" %>
+            <%# Selection field for article categories %>
             <div class="col-10">
               <%= f.collection_select(:category_ids, Category.all, :id, :name,
               { prompt: "Make your selection from the list below (can be empty)" }, { multiple: true, size: 5, class: "custom-select shadow rounded" },) %>
             </div>
         </div>
 
-        
+        <%# Article form buttons %>
         <div class="form-group row justify-content-center">
+          <%# Article Submit button %>
           <%= f.submit class: "btn btn-success", id: "btn-submit-form" %>
+          <%# Cancel creation/edit button - redirects to articles index page %>
           <%= link_to 'Cancel and Return to Articles Listing', articles_path, class: "btn btn-danger", id: "btn-cancel form" %>
         </div>
       <% end %>
     </div>
-
   </div>
 </div>

@@ -1,13 +1,24 @@
+<%# Form for creating a new category or editing an existing category %>
+<%# Render error messages associated w/ @category obj from a previous failed save %>
 <%= render 'shared/errors', obj: @category %>
+<%# Create form based on category model %>
+<%# Add bootstrap classes for styling %>
 <%= form_with(model: @category, class: "shadow p-3 mb-3 rounded general-form", local: true)  do |f| %>
+  <%# Category name row %>
   <div class="form-group row">
+    <%# Category name label %>
     <%= f.label :name, "Category Name", class: "col-2 col-form-label" %>
+    <%# Category name input field %>
     <div class="col-10">
       <%= f.text_field :name, class: "form-control shadow rounded form-input", placeholder: "Enter a category name" %>
     </div>
   </div>
+
+  <%#  Form buttons %>
   <div class="form-group row justify-content-center">
+    <%# Submit button %>
     <%= f.submit class: "btn btn-success", id: "btn-submit-form" %>
+    <%# Cancel button resturns to categories index %>
     <%= link_to 'Cancel and Return to Categories Listing', categories_path, class: "btn btn-primary" %>
   </div>
 <% end %>

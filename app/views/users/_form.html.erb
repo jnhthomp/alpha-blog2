@@ -1,39 +1,66 @@
+<%# Used to collect data to create and edit users %>
+
+<%# In bootstrap container to keep centered on page %>
 <div class="container">
+  <%# Adds the entrire form to it's own row
+      This makes it easier to adjust the height and size of the form and center its contents%>
   <div class="row justify-content-center">
-    <div class="col-10">
+    <%# width of the form on the page (using bootstrap columns) %>
+    <div class="col-10"> 
+      <%# show any errors on the page 
+          We pass the @user obj into the page to check if there are any errors in saving the current user object %>
       <%= render 'shared/errors', obj: @user %>
+      <%# Create the user form we specify that this will be saved in the user table so it must be created with the user.rb model
+          There are also some bootstrap classes added  %>
       <%= form_with(model: @user, class: "shadow p-3 mb-3 rounded general-form", local: true)  do |f| %>
+
+        <%# Username row %>
         <div class="form-group row">
+          <%# username label for input %>
           <%= f.label :username, class: "col-2 col-form-label" %>
+          <%# username input field %>
           <div class="col-10">
             <%= f.text_field :username, class: "form-control shadow rounded form-input", placeholder: "Enter a username" %>
           </div>
         </div>
 
+        <%# Email row %>
         <div class="form-group row">
-            <%= f.label :email, class: "col-2 col-form-label" %>
-            <div class="col-10">
+          <%# email label for input %>
+          <%= f.label :email, class: "col-2 col-form-label" %>
+          <%# email input field %>
+          <div class="col-10">
             <%= f.email_field :email, class: "form-control shadow rounded form-input", placeholder: "Enter your email address" %>
-            </div>
+          </div>
         </div>
 
+        <%# Password row %>
         <div class="form-group row">
-            <%= f.label :password, class: "col-2 col-form-label" %>
-            <div class="col-10">
+          <%# password label for input %>
+          <%= f.label :password, class: "col-2 col-form-label" %>
+          <%# password input field %>
+          <div class="col-10">
             <%= f.password_field :password, class: "form-control shadow rounded form-input", placeholder: "Choose a password" %>
-            </div>
+          </div>
         </div>
 
-        
+        <%# Buttons row %>
         <div class="form-group row justify-content-center">
+          <%# Submit button
+              This will check if @user hasn't been saved yet
+              If a matching user record does NOT exist then the button will display "Signup"
+                submits to users#create
+              If a matching user record does exist then the button will display "Update Profile" %>
           <%= f.submit(@user.new_record? ? "Sign Up" : "Update Profile", class: "btn btn-success", id: "btn-submit-form") %>
+          <%# Button to cancel signup or edit process and go the articles/index %>
           <%= link_to 'Cancel and Return to Articles Listing', articles_path, class: "btn btn-primary" %>
+          <%# Check if user is logged in and if they are viewing their own profile %>
           <% if logged_in? && @user == current_user %>
+            <%# If so then show a button to delete profile (user#destroy) %>
             <%= link_to  'Delete Profile', user_path(current_user), class: "btn btn-danger", id: "btn-cancel-form", method: :delete, data: {confirm: "Are you sure you want to delete your account?"}%>  
           <% end %>
         </div>
       <% end %>
     </div>
-
   </div>
 </div>

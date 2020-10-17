@@ -56,6 +56,7 @@ group :test do
 end
 
 group :production do
+  # Postgres is by heroku instead of sqlite3 so we need to include pg for production
   gem 'pg'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

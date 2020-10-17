@@ -1,22 +1,39 @@
+<%# Loop through list of @articles %>
 <% obj.each do |article| %>
+  <%# row for arrangement and centering %>
   <div class="row justify-content-md-center mt-4">
+    <%# set width of article card %>
     <div class="col-8">
+      <%# bootstrap classes for article cards %>
       <div class="card text-center shadow rounded">
+        <%# Article Author and categories%>
         <h5 class="card-header font-italic">by <%= link_to article.user.username, user_path(article.user), class: "link" if article.user %>
+          <%# List article categories if any exist w/ link to category %>
           <% if article.categories.any? %>
+            <%# load from categories/_category for each result from article.categories %>
             <div class="mt-2"><%= render article.categories %></div>
           <% end %>
         </h5>
+        <%# Article info %>
         <div class="card-body">
+          <%# Article title %>
           <h5 class="card-title"><%= link_to article.title, article_path(article), id: "card-title-text" %></h5>
+          <%# Article content %>
           <p class="card-text"><%= truncate(article.description, length: 100) %></p>
+          <%# View article button %>
           <%= link_to "View", article_path(article), class: "btn btn-primary"%>
+          <%# Check if a user is logged in and if the logged in user is the author of the current article or an admin %>
           <% if logged_in? && (article.user == current_user || current_user.admin?) %>
+            <%# If either of the above then: %>
+              <%# Edit article button %>
             <%= link_to "Edit", edit_article_path(article), class: "btn btn-success" %>
+              <%# Delete article button %>
             <%= link_to "Delete", article_path(article), class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure you want to delete this article?"} %>
           <% end %>
         </div>
+        <%# Footer for article card %>
         <div class="card-footer text-muted">
+          <%# Show how long ago the article was created/updated %>
           <small>Created <%= time_ago_in_words(article.created_at) %> ago, edited <%= time_ago_in_words(article.updated_at) %> ago</small>
         </div>
       </div>

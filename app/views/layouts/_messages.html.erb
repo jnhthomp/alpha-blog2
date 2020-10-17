@@ -1,7 +1,13 @@
+<%# Bootstrap class for centering %>
 <div class="container">
+  <%# go through each flash message and use type of message and the message as arguements %>
   <% flash.each do |name, msg| %>
+    <%# run application_helper method with type of flash message
+        will return a bootstrap class based on the type of flash message %>
     <div class="alert <%= bootstrap_class_for(name) %> alert-dismissible fade show" role="alert">
+      <%# display the text for the flash message in the bootstrap div %>
       <%= msg %>
+      <%# small close 'x' button for the flash message %>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>

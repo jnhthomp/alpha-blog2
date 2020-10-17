@@ -1,20 +1,27 @@
+<%# Header for articles index page %>
 <h1 class="text-center mt-4">Articles Listing Page</h1>
 
+<%# Check if a user is logged in (application controller helper) %>
 <% if logged_in? %>
+  <%# If user is logged in display a button to create a new article %>
   <p class="text-center"><%= link_to 'Create New Article', new_article_path, class: "btn btn-success mt-2 mb-2"%></p>  
 <% end %>
 
 
-
+<%# Container to center pagination stuff %>
 <div class="container">
+  <%# pagination %>
   <div class="apple_pagination">
       <%= will_paginate @articles, :container => false %>
   </div>
 </div>
 
+<%# render _article partial (passes in @articles list of all [current page] articles) %>
 <%= render 'article', obj: @articles %>
 
+<%# container to center pagination %>
 <div class="container mb-4">
+  <%# pagination %>
   <div class="apple_pagination">
       <%= will_paginate @articles, :container => false %>
   </div>

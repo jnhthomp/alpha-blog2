@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%# Displayed in tab %>
     <title>AlphaBlog2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%# link rails css and js %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <%# bootstrap classes for arrangement %>
   <body class="d-flex flex-column">
+    <%# load navbar %>
     <%= render 'layouts/navigation' %>
+    <%# Where the site will load %>
     <div id="page-content">
+      <%# load any flash messages (errors/notice) %>
       <%= render 'layouts/messages' %>
+      <%# Page content to load %>
       <%= yield %>
     </div>
+    <%# load footer %>
     <%= render 'layouts/footer' %>
   </body>
 </html>

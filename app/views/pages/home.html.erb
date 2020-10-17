@@ -1,9 +1,16 @@
+<%# Put page in a bootstrap container so it will be centered in the page %>
 <div class="container" id="home-container">
+  <%# Bootstrap jumbotron to show large image, title, text, and button %>
   <div class="jumbotron text-center text-white">
+    <%# Jumbotron title %>
     <h1 class="display-4">Alpha-Blog!</h1>
+    <%# top text %>
     <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <%# divider line %>
     <hr class="my-4">
+    <%# bottom text %>
     <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <%# Button to signup (users#new) %>
     <%= link_to "Sign Up!", signup_path, class: "btn btn-primary btn-lg" %>
   </div>
 </div>

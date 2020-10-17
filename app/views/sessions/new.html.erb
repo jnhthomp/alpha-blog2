@@ -1,27 +1,43 @@
+<%# Login page header %>
 <h1 class="text-center mt-4">Log In</h1>
 
+<%# container to center on page %>
 <div class="container">
+  <%# Row to center child divs %>
   <div class="row justify-content-center">
+    <%# Set width of login form %>
     <div class="col-10">
+      <%# Create login form %>
       <%= form_with(scope: :session, url: login_path, class: "shadow p-3 mb-3 rounded general-form", local: true)  do |f| %>
+        
+        <%# Username form row %>
         <div class="form-group row">
+          <%# Username field label %>
           <%= f.label :username, class: "col-2 col-form-label" %>
+          <%# Username input field %>
           <div class="col-10">
             <%= f.text_field :username, class: "form-control shadow rounded form-input", placeholder: "Enter a username" %>
           </div>
         </div>
+
+        <%# Password form row %>
         <div class="form-group row">
+            <%# Password field label %>
             <%= f.label :password, class: "col-2 col-form-label" %>
+            <%# Password field input %>
             <div class="col-10">
             <%= f.password_field :password, class: "form-control shadow rounded form-input", placeholder: "Enter your password" %>
             </div>
         </div>
+
+        <%# Form buttons %>
         <div class="form-group row justify-content-center">
+          <%# Submit button %>
           <%= f.submit "Log in", class: "btn btn-success", id: "btn-submit-form" %>
+          <%# Cancel button routes to articles index %>
           <%= link_to 'Cancel and Return to Articles Listing', articles_path, class: "btn btn-danger", id: "btn-cancel form" %>
         </div>
       <% end %>
     </div>
-
   </div>
 </div>
