@@ -10,8 +10,6 @@ You can find the demo of this site hosted on heroku here: [Alpha Blog on Heroku]
 ## TODO
 (Sorted by shorter to longer tasks)
 
-* Update jumbotron with more appropriate info
-
 * Update favicon
 
 * Update css to use variables for colors instead of specifying color in all places
