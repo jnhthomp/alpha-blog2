@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   end
 
   # Loads pages/about.html.erb (empty)
-  def about
+  # def about
     
-  end
+  # end
 end

@@ -9,7 +9,6 @@ You can find the demo of this site hosted on heroku here: [Alpha Blog on Heroku]
 
 ## TODO
 (Sorted by shorter to longer tasks)
-* Disable or edit the about page
 
 * Update jumbotron with more appropriate info
 
@@ -28,6 +27,8 @@ You can find the demo of this site hosted on heroku here: [Alpha Blog on Heroku]
 * Add tests for User and Articles models, controllers, functions
 
 * Get rid of bootstrap and replace with custom html/css/js
+
+* Use about page to show project info (use this README as a guide and add link to jumbotron)
 
 ### Considerations:
 
