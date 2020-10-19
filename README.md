@@ -10,8 +10,6 @@ You can find the demo of this site hosted on heroku here: [Alpha Blog on Heroku]
 ## TODO
 (Sorted by shorter to longer tasks)
 
-* Update css to use variables for colors instead of specifying color in all places
-
 * edit 404 files for custom 404 pages? (public folder)
 
 * Add functionality for an admin to make another user an admin (superuser?)

@@ -1,5 +1,17 @@
 @import 'bootstrap/dist/css/bootstrap';
 
+$background-primary:              #1b2327;
+$background-secondary:            #1f292e;
+$background-secondary-highlight:  #27333a;
+$tint:                            rgba(39, 51, 58, .4);
+$light-primary:                   #ffffff;
+$light-secondary:                 #bcbfc1;
+$accent-primary:                  #418e86;
+$accent-primary-highlight:        #37988e;
+$accent-secondary:                #6f4fff;
+$accent-secondary-highlight:      #7e4fff;
+$accent-danger:                   #dc3545;
+$disabled:                        #aaaaaa;
 
 
 // General
@@ -9,25 +21,25 @@ body {
 }
 
 h1 {
-  color: #bcbfc1;
+  color: $light-secondary;
 }
 
 h2 {
-  color: #bcbfc1;
+  color:$light-secondary;
 }
 
 .link,
 .link:hover {
-  color: #bcbfc1;
+  color:$light-secondary;
 }
 
 #page-content {
   flex: 1 0 auto;
-  background-color: #1b2327;
+  background-color: $background-primary;
 }
 
 .admin-title{
-  color: #418e86;
+  color: $accent-primary;
 }
 // End General
 
@@ -35,42 +47,42 @@ h2 {
 
 // Navbar 
 #nav-search{
-  background-color: #1b2327;
-  border-color: #1f292e;
+  background-color: $background-primary;
+  border-color: $background-secondary;
 }
 
 #logo {
   float: left;
   font-size: 1.7em;
-  color: #418e86 !important;
+  color: $accent-primary !important;
   text-transform: uppercase;
   letter-spacing: -1px;
   font-weight: bold;
 }
 
 .navbar-dark {
-  background-color: #1f292e !important;
+  background-color: $background-secondary !important;
 }
 
 .nav-link {
-  color: #bcbfc1 !important;
+  color:$light-secondary !important;
 }
 
 .dropdown-menu {
-  background-color: #1f292e;
+  background-color: $background-secondary;
 }
 
 .dropdown-item{
-  color:  #bcbfc1;
+  color: $light-secondary;
 }
 
 .dropdown-item:hover{
-  background-color: #27333a;
-  color: #418e86;
+  background-color:$background-secondary-highlight;
+  color: $accent-primary;
 }
 
 .dropdown-divider{
-  color:  #418e86 !important;
+  color:  $accent-primary !important;
 }
 
 // End Navbar
@@ -79,15 +91,15 @@ h2 {
 
 // Flash Messages
 .alert-danger {
-  background-color: #dc3545;
+  background-color: $accent-danger;
   border: none;
-  color: white;
+  color: $light-primary;
 }
 
 .alert-success {
-  background-color: #418e86;
+  background-color: $accent-primary;
   border: none;
-  color:  white;
+  color:  $light-primary;
 }
 
 // End Flash Messages
@@ -97,7 +109,7 @@ h2 {
 // Footer
 #sticky-footer {
   flex-shrink: none;
-  background-color: #1f292e !important;
+  background-color: $background-secondary !important;
 }
 
 // End Footer
@@ -118,32 +130,32 @@ h2 {
 }
 
 .btn-primary {
-  background-color: #6f4fff;
+  background-color: $accent-secondary;
   border: none;
 }
 
 .btn-primary:hover {
-  background-color: #7e4fff;
+  background-color:$accent-secondary-highlight;
 }
 
 .btn-outline-success {
-  background-color: #418e86 !important;
+  background-color: $accent-primary !important;
   border: none;
-  color: white;
+  color: $light-primary;
 }
 
 .btn-outline-success:hover {
-  background-color: #37988e !important;
+  background-color: $accent-primary-highlight !important;
   border: none;
 }
 
 .btn-success {
-  background-color: #418e86 !important;
+  background-color: $accent-primary !important;
   border: none;
 }
 
 .btn-success:hover{
-  background-color: #37988e !important;
+  background-color: $accent-primary-highlight !important;
   border: none;
 }
 
@@ -153,22 +165,22 @@ h2 {
 
 // Cards
 #card-title-text {
-  color: #018786;
+  color: $accent-primary;
 }
 
 .card{
   border: none;
 }
 .card-body {
-  background-color: #1f292e;
-  color: #bcbfc1;
+  background-color: $background-secondary;
+  color:$light-secondary;
   border: none;
 }
 
 .card-header,
 .card-footer {
-  background-color: #27333a;
-  color: #bcbfc1;
+  background-color:$background-secondary-highlight;
+  color:$light-secondary;
 }
 
 .card-header:first-child {
@@ -176,11 +188,11 @@ h2 {
 }
 
 .badge-success {
-  background-color: #418e86;
+  background-color: $accent-primary;
 }
 
 .badge-success:hover {
-  background-color: #37988e !important;
+  background-color: $accent-primary-highlight !important;
 }
 
 // End Cards
@@ -189,7 +201,7 @@ h2 {
 
 // Pagination
 .apple_pagination {
-  background: #1b2327;
+  background: $background-primary;
   border: none;
   text-align: center;
   padding: 1em;
@@ -202,32 +214,31 @@ h2 {
 }
 
 .apple_pagination .disabled {
-  color: #aaaaaa; 
+  color: $disabled; 
 }
 
 .apple_pagination .current {
   font-style: normal;
   font-weight: bold;
-  background-color: #418e86;
+  background-color: $accent-primary;
   display: inline-block;
   width: 1.4em;
   height: 1.4em;
   line-height: 1.5;
   -moz-border-radius: 1em;
   -webkit-border-radius: 1em;
-  border-radius: 1em;
-  //text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; 
+  border-radius: 1em; 
 }
 
 .apple_pagination a {
   text-decoration: none;
-  color: white; 
+  color: $light-primary; 
 }
 
 .apple_pagination a:hover, 
 .apple_pagination a:focus {
   text-decoration: none;
-  color: #418e86;
+  color: $accent-primary;
 }
 
 // End Pagination
@@ -236,21 +247,21 @@ h2 {
 
 // Forms
 .general-form {
-  background-color: #1f292e !important;
-  color: #bcbfc1 !important;
+  background-color: $background-secondary !important;
+  color:$light-secondary !important;
 }
 
 .form-input, 
 .form-input:active,
 .form-input:focus {
-  background-color: #27333a;
+  background-color:$background-secondary-highlight;
   border: none;
-  color: #bcbfc1;
+  color:$light-secondary;
 }
 
 .custom-select {
-  background-color: #27333a;
-  color: white;
+  background-color:$background-secondary-highlight;
+  color: $light-primary;
 }
 
 // End Forms
@@ -268,11 +279,12 @@ h2 {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  text-shadow: -1px 0 #373b41, 0 1px #373b41, 1px 0 #373b41, 0 -1px #373b41;
+  // No color shortcut used here 
+  text-shadow: -1px 0 $background-primary, 0 1px $background-primary, 1px 0 $background-primary, 0 -1px $background-primary;
 }
 
 .jumbo-tint {
-  background-color: rgba(39, 51, 58, .4);
+  background-color: $tint;
   margin-left: 20%;
   margin-right: 20%;
   padding-bottom: 1em;
