@@ -114,15 +114,15 @@ Tests status:
     		Need:
     			"must have article"
     			"must have category"
-    	article_test.rb
-    		Need:
-    			"must have user"
-    			"must have title"
-    			"title should not be too short"
-    			"title should not be too long"
-    			"must have description"
-    			"description cannot be too short"
-    			"description cannot be too long"
+DONE    	article_test.rb
+DONE    		Have:
+DONE    			"must have user"
+DONE    			"must have title"
+DONE    			"title should not be too short"
+DONE    			"title should not be too long"
+DONE    			"must have description"
+DONE    			"description cannot be too short"
+DONE    			"description cannot be too long"
     	user_test.rb
     		Need:
     			"user articles should be destroyed when user is destroyed"
