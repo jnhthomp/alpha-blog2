@@ -5,6 +5,8 @@ This app allows an unregistered user to view a listing of articles, categories, 
 
 You can find the demo of this site hosted on heroku here: [Alpha Blog on Heroku](https://alpha-blog-jt2.herokuapp.com/)
 
+Also feel free to check out the sitemap that is included in the [Alpha-Blog-Map.drawio](Alpha-Blog-Map.drawio) file to see the flow of the site.
+
 
 
 ## TODO
@@ -16,6 +18,8 @@ You can find the demo of this site hosted on heroku here: [Alpha Blog on Heroku]
 
 * Integrate ActionCable for a chat/messaging section
 
+* Add user password requirements
+
 * Check that all possible tests are present
 
 * Add tests for User and Articles models, controllers, functions
@@ -26,7 +30,7 @@ You can find the demo of this site hosted on heroku here: [Alpha Blog on Heroku]
 
 ### Considerations:
 
-####Application Controller
+#### Application Controller
 * Consider using object.present? instead of !! in logged_in? method
 
 #### Nav Partial
@@ -38,3 +42,103 @@ You can find the demo of this site hosted on heroku here: [Alpha Blog on Heroku]
 
 #### Delete unused files:
 * app/helpers/pages_helper.rb
+
+
+
+----------------------------------------------------------------------------------------------
+Tests status:
+
+    controllers
+    	categories_controller_test.rb
+    		Have:
+    			"should not create category if not admin"
+    			"should show category"
+    		Need:
+    			"should get new"
+    			"should get edit"
+    			"Should get index"
+    			"Should create category"
+    			"should update category"
+    			"Should not update if not admin"
+    			"Should destroy category"
+    	pages_controller_test.rb
+    		Need:
+    			"should get home"
+    			"should not get home if logged in"
+    	articles_controller_test.rb
+    	sessions_controller_test.rb
+    	users_controller_test.rb
+    	
+    integration
+    	create_category_test.rb
+    		Have:
+    			"get new category form and create category"
+    			"get new category form and reject invalid category submission"
+    	modify_category_test.rb
+    		Need:
+    			"get existing category and successfully update name"
+    			"get existing category and reject invalid name"
+    			"delete existing category"
+    	list_categories_test.rb
+    		Have:
+    			"should show categories listing"
+    	create_article_test.rb
+    		Need:
+    			"get new article form and create new article"
+    			"get new article form and reject invalid article"
+    	modify_article_test.rb
+    		Need:
+    			"get existing article and successfully update"
+    			"get existing article and reject invalid update"
+    			"delete existing article"
+    			"reject article deletion if not same user or admin"
+    	create_user_test.rb
+    		need:
+    			"Get new user form and create new user"
+    			"get new user form and reject invalid user"
+    	modify_user_test.rb
+    		Need:
+    			"get existing user and successfully update"
+    			"get existing user and reject invalid update"
+    			"delete existing user"
+    			"reject user deletion if not same user or admin"
+    	
+    	
+    models
+    	category_test.rb
+    		Have:
+    			"name should be unique"
+    			"name should not be too long"
+    			"name should not be too short"
+    	article_categories_test.rb
+    		Need:
+    			"must have article"
+    			"must have category"
+    	article_test.rb
+    		Need:
+    			"must have user"
+    			"must have title"
+    			"title should not be too short"
+    			"title should not be too long"
+    			"must have description"
+    			"description cannot be too short"
+    			"description cannot be too long"
+    	user_test.rb
+    		Need:
+    			"user articles should be destroyed when user is destroyed"
+    			"must have username"
+    			"username must be unique"
+    			"username should not be too short"
+    			"username should not be too long"
+    			"must have email"
+    			"email must be unique"
+    			"email must not be too long"
+    			"email must follow regex format"
+    			"must have password_digest"
+    			"password is hashed"
+    
+    test_helper.rb
+    	sign_in_as(user)
+    		receiver an obj with user credentials specified 
+    		user must have been created and added to users table before this is called
+    		user must have the same password as the one listed in this test
