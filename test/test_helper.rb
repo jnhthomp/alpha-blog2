@@ -17,4 +17,28 @@ class ActiveSupport::TestCase
     # use the following as credentials for login user is defined in setup method for the test
     post login_path, params: { session: { username: user.username, password: "testadminpass" } }
   end
+
+  # Create a new @user obj and save to test db (non-admin)
+  def create_user
+    # Set attributes for new user
+    @user = User.new(username: "test_user", email: "test_user@email.com", password: "test_user_pasword", admin: false)
+    # Save new user to test db
+    @user.save
+  end
+
+  # Create a new @article and save to test db
+  def create_article(user)
+    # Set attributes for new article
+    @article = Article.new(title: "Article Title", description: "Article description", user: user)
+    # Save new article to test db
+    @article.save
+  end
+
+  # Create a new @category and save to test db
+  def create_category
+    # Set attributes for new category
+    @category = Category.new(name: "Category")
+    # Save new category to test db
+    @category.save
+  end
 end
