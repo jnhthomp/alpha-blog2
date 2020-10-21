@@ -1,0 +1,17 @@
+# "should show users index page"
+# "should show new user signup page"
+# "new user page should not be available to logged in users"
+#   # This one is a pick or choose. I don't think the app is broken leaving it as is. If a new user is created when another user is already logged in it will simply overwrite the session[:user_id] resulting in the original user being logged out and the new user being logged in instead
+# "should create a new user"
+# "should not create a new user if user obj is invalid"
+# "should load user show page"
+# "articles written by user should be available"
+# "should load user edit page"
+# "should not load user edit page if not logged in as same user"
+# "should update user"
+# "should not update user if not logged in as same user"
+# "should destroy user if logged in as same user"
+# "should destroy user if logged in as admin"
+# "should destroy associated user articles" 
+#   #Is this better in model test?
+# "should not destroy user if not logged in as same user or admin"

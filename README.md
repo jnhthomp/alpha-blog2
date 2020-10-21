@@ -12,6 +12,8 @@ Also feel free to check out the sitemap that is included in the [Alpha-Blog-Map.
 ## TODO
 (Sorted by shorter to longer tasks)
 
+* Comment controller tests to add organization by method
+
 * edit 404 files for custom 404 pages? (public folder)
 
 * Add functionality for an admin to make another user an admin (superuser?)
@@ -84,8 +86,39 @@ DONE          "should destroy article if logged in and curent user or admin"
 DONE          "should not destroy article if not logged in or current user or admin"
 
     	sessions_controller_test.rb
+				Need: 
+				  "should load new session page (login page)"
+					"should create new session w/ valid credentials"
+					"shoud not create new session w/ invalid credentials"
+					"should destroy session if user is logged in"
+					"should not destroy session if user is not logged in"
     	users_controller_test.rb
-    	
+    	  Need:
+					index
+					"should show users index page"
+					new
+					"should show new user signup page"
+					"new user page should not be available to logged in users"
+						# This one is a pick or choose. I don't think the app is broken leaving it as is. If a new user is created when another user is already logged in it will simply overwrite the session[:user_id] resulting in the original user being logged out and the new user being logged in instead
+					create
+					"should create a new user"
+					"should not create a new user if user obj is invalid"
+					show
+					"should load user show page"
+					"articles written by user should be available"
+					edit
+					"should load user edit page"
+					"should not load user edit page if not logged in as same user"
+					update
+					"should update user"
+					"should not update user if not logged in as same user"
+					destroy
+					"should destroy user if logged in as same user"
+					"should destroy user if logged in as admin"
+					"should destroy associated user articles" 
+						#Is this better in model test?
+					"should not destroy user if not logged in as same user or admin"
+
     integration
     	create_category_test.rb
     		Have:
