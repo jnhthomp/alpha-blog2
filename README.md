@@ -22,6 +22,9 @@ Also feel free to check out the sitemap that is included in the [Alpha-Blog-Map.
 
 * Check that all possible tests are present
   * Move as much out of setup and into test_helper as possible
+  * Update helper method functions to set defaults in the function
+  * Allow these defaults to be overwritten when the method is called by providing a key/value
+  * remove .save from 'create' helper methods and add where necessary
 
 * Add tests for User and Articles models, controllers, functions
 
@@ -105,16 +108,19 @@ Tests status:
     			"reject user deletion if not same user or admin"
     	
     	
-    models
-    	category_test.rb
-    		Have:
-    			"name should be unique"
-    			"name should not be too long"
-    			"name should not be too short"
-    	article_categories_test.rb
-    		Need:
-    			"must have article"
-    			"must have category"
+DONE    models
+DONE    	category_test.rb
+DONE    		Have:
+DONE          "category should be valid"
+DONE          "name should be present"
+DONE    			"name should be unique"
+DONE    			"name should not be too long"
+DONE    			"name should not be too short"
+DONE    	article_categories_test.rb
+DONE    		Have:
+DONE          "should be valid"
+DONE    			"must have article"
+DONE    			"must have category"
 DONE    	article_test.rb
 DONE    		Have:
 DONE    			"must have user"
@@ -124,20 +130,20 @@ DONE    			"title should not be too long"
 DONE    			"must have description"
 DONE    			"description cannot be too short"
 DONE    			"description cannot be too long"
-    	user_test.rb
-    		Need:
-    			"user articles should be destroyed when user is destroyed"
-    			"must have username"
-    			"username must be unique"
-    			"username should not be too short"
-    			"username should not be too long"
-    			"must have email"
-    			"email must be unique"
-    			"email must not be too long"
-    			"email must follow regex format"
-    			"must have password_digest"
-    			"password is hashed"
-          "user is not admin by default
+DONE    	user_test.rb
+DONE    		Need:
+DONE    			"user articles should be destroyed when user is destroyed"
+DONE    			"must have username"
+DONE    			"username must be unique"
+DONE    			"username should not be too short"
+DONE    			"username should not be too long"
+DONE    			"must have email"
+DONE    			"email must be unique"
+DONE    			"email must not be too long"
+DONE    			"email must follow regex format"
+DONE    			"must have password_digest"
+DONE    			"password is hashed"
+DONE          "user is not admin by default
     
     test_helper.rb
     	sign_in_as(user)
