@@ -3,9 +3,10 @@ require 'test_helper'
 class Articletest < ActiveSupport::TestCase
   
   def setup
-    @user = User.new(username: "test_user", email: "test_user@email.com", password: "test_user_pasword", admin: false)
-    @user.save
-    @article = Article.new(title: "Article Title", description: "Article description", user: @user)
+    # Create and save new @user object so @article can be created
+    create_user
+    # Create and save new @article object for @article_category
+    create_article(@user)
   end
   
   # Check that @user blueprint from setup is still valid

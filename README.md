@@ -21,6 +21,7 @@ Also feel free to check out the sitemap that is included in the [Alpha-Blog-Map.
 * Add user password requirements
 
 * Check that all possible tests are present
+  * Move as much out of setup and into test_helper as possible
 
 * Add tests for User and Articles models, controllers, functions
 
@@ -136,6 +137,7 @@ DONE    			"description cannot be too long"
     			"email must follow regex format"
     			"must have password_digest"
     			"password is hashed"
+          "user is not admin by default
     
     test_helper.rb
     	sign_in_as(user)
