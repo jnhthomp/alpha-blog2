@@ -25,6 +25,8 @@ Also feel free to check out the sitemap that is included in the [Alpha-Blog-Map.
   * Update helper method functions to set defaults in the function
   * Allow these defaults to be overwritten when the method is called by providing a key/value
   * remove .save from 'create' helper methods and add where necessary
+    * replace w/ .create if you want to keep the functionality?
+    * Figure out how you want to handle creating users and signing in in tests
 
 * Add tests for User and Articles models, controllers, functions
 
@@ -64,11 +66,23 @@ DONE    			"Should create category"
 DONE    			"should update category"
 DONE    			"Should not update if not admin"
 DONE    			"Should destroy category"
-    	pages_controller_test.rb
-    		Need:
-    			"should get home"
-    			"should not get home if logged in"
-    	articles_controller_test.rb
+DONE    	pages_controller_test.rb
+DONE    		Have:
+DONE    			"should get home"
+DONE    			"should not get home if logged in"
+DONE    	articles_controller_test.rb
+DONE        Have:
+DONE          "should show article show page"
+DONE          "should show article index page"
+DONE          "should show article new page"
+DONE          "Should show article edit page"
+DONE          "should create new article if logged in"
+DONE          "should not create new article if not logged in"
+DONE          "should update article if logged in and current user or admin"
+DONE          "should not update article if not logged in or current user or admin"
+DONE          "should destroy article if logged in and curent user or admin"
+DONE          "should not destroy article if not logged in or current user or admin"
+
     	sessions_controller_test.rb
     	users_controller_test.rb
     	
