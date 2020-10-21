@@ -53,18 +53,17 @@ Also feel free to check out the sitemap that is included in the [Alpha-Blog-Map.
 Tests status:
 
     controllers
-    	categories_controller_test.rb
-    		Have:
-    			"should not create category if not admin"
-    			"should show category"
-    		Need:
-    			"should get new"
-    			"should get edit"
-    			"Should get index"
-    			"Should create category"
-    			"should update category"
-    			"Should not update if not admin"
-    			"Should destroy category"
+DONE    	categories_controller_test.rb
+DONE    		Have:
+DONE    			"should not create category if not admin"
+DONE    			"should show category"
+DONE          "Should get index"
+DONE    			"should get new"
+DONE    			"should get edit"
+DONE    			"Should create category"
+DONE    			"should update category"
+DONE    			"Should not update if not admin"
+DONE    			"Should destroy category"
     	pages_controller_test.rb
     		Need:
     			"should get home"

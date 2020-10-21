@@ -31,6 +31,16 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  # Load the edit page for a category if admin
+  test "should get edit" do
+    # Sign in as admin user
+    sign_in_as(@admin_user)
+    # Go to edit category page
+    get edit_category_url(@category)
+    # Confirm edit category page was returned successfully
+    assert_response :success
+  end
+
   # Ensure that category creation functionality works
   test "should create category" do
     # Use sign in function with admin account (sign_in_as found in test_helper.rb)
@@ -46,6 +56,16 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to category_url(Category.last)
   end
 
+  # Ensure that admin users are able to update category
+  test "should update category" do
+    # Sign in as admin user
+    sign_in_as(@admin_user)
+    # Pass new category name to the update path for an existing category
+    patch category_url(@category), params: { category: { name: "travel" } }
+    # Ensure that we were redirected to the category page (successfully)
+    assert_redirected_to category_url(@category)
+  end
+
   # Ensure that normal users cannot create a new category, must be admin.
   test "should not create category if not admin" do
     # Check that category count does not change after the do block
@@ -53,9 +73,18 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
       # Try to create a new category with the given name
       post categories_url, params: { category: { name: "travel" } }
     end
-
     # Check that we can view the categories index page
     assert_redirected_to categories_url
+  end
+
+  # Ensure that non admin users cannot update a category
+  test "should not update category if not admin" do
+    # Note the initial name of the category (should not change)
+    initial_name = @category.name
+    # Attempt to update the category name
+    patch category_url(@category), params: { category: { name: "travel"} }
+    # Compare with the initial name to ensure it hasn't changed
+    assert @category.name == initial_name
   end
 
   # Check that category url works
@@ -66,21 +95,27 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test "should get edit" do
-  #   get edit_category_url(@category)
-  #   assert_response :success
-  # end
+  # Ensure that admin users are able to destroy existing categories
+  test "should destroy category" do
+    # Sign in as admin user
+    sign_in_as(@admin_user)
+    # Compare the initial number of existing categories to before and after do block
+    #   (should be -1)
+    assert_difference('Category.count', -1) do
+      # Delete the category from categories table
+      delete category_url(@category)
+    end
+    # Ensure that we were redirected to categories index (successful)
+    assert_redirected_to categories_url
+  end
 
-  # test "should update category" do
-  #   patch category_url(@category), params: { category: {  } }
-  #   assert_redirected_to category_url(@category)
-  # end
-
-  # test "should destroy category" do
-  #   assert_difference('Category.count', -1) do
-  #     delete category_url(@category)
-  #   end
-
-  #   assert_redirected_to categories_url
-  # end
+  # Ensure that non admin users are not able to destroy existing categories
+  test "should not destroy category if not admin" do
+    # Compare initial number of existing categoires to before and after do block
+    #   (should be the same)
+    assert_no_difference('Category.count') do
+      # Attempt to delete the category from the user table
+      delete category_url(@category)
+    end
+  end
 end
