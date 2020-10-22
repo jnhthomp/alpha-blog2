@@ -11,7 +11,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     @admin_user = create_new_user(admin: true)
     # Create an article written by @user
     # This is because admin should be able to modify even though @user_admin is not assigned to it
-    create_article(@user)
+    @article = create_article(@user)
   end
 
   #### INDEX TESTS

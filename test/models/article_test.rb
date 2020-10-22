@@ -6,7 +6,7 @@ class Articletest < ActiveSupport::TestCase
     # Create and save new @user object so @article can be created
     @user = create_new_user
     # Create and save new @article object for @article_category
-    create_article(@user)
+    @article = create_article(@user)
   end
   
   # Check that @user blueprint from setup is still valid

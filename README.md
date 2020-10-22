@@ -12,9 +12,7 @@ Also feel free to check out the sitemap that is included in the [Alpha-Blog-Map.
 ## TODO
 (Sorted by shorter to longer tasks)
 
-* Clean out old commented out methods that were replaced by create_new_user and sign_in_as(user)
-
-* Add tests for User and Articles models, controllers, functions
+* Add inegration tests
 
 * Use about page to show project info (use this README as a guide and add link to jumbotron)
 	* Match look of page with article cards
@@ -58,61 +56,8 @@ Also feel free to check out the sitemap that is included in the [Alpha-Blog-Map.
 
 
 
-----------------------------------------------------------------------------------------------
-Tests status:
-
-    controllers
-DONE    	categories_controller_test.rb
-DONE    		Have:
-DONE    			"should not create category if not admin"
-DONE    			"should show category"
-DONE          "Should get index"
-DONE    			"should get new"
-DONE    			"should get edit"
-DONE    			"Should create category"
-DONE    			"should update category"
-DONE    			"Should not update if not admin"
-DONE    			"Should destroy category"
-DONE    	pages_controller_test.rb
-DONE    		Have:
-DONE    			"should get home"
-DONE    			"should not get home if logged in"
-DONE    	articles_controller_test.rb
-DONE        Have:
-DONE          "should show article show page"
-DONE          "should show article index page"
-DONE          "should show article new page"
-DONE          "Should show article edit page"
-DONE          "should create new article if logged in"
-DONE          "should not create new article if not logged in"
-DONE          "should update article if logged in and current user or admin"
-DONE          "should not update article if not logged in or current user or admin"
-DONE          "should destroy article if logged in and curent user or admin"
-DONE          "should not destroy article if not logged in or current user or admin"
-DONE    	sessions_controller_test.rb
-DONE				Have: 
-DONE				  "should load new session page (login page)"
-DONE					"should create new session w/ valid credentials"
-DONE					"shoud not create new session w/ invalid credentials"
-DONE					"should destroy session if user is logged in"
-DONE					"should not destroy session if user is not logged in"
-DONE    	users_controller_test.rb
-DONE    	  Have:
-DONE					"should show users index page"
-DONE					"should show new user signup page"
-DONE					"new user page should not be available to logged in users"
-DONE					"should create a new user"
-DONE					"should not create a new user if user obj is invalid"
-DONE					"should load user show page"
-DONE					"articles written by user should be available"
-DONE					"should load user edit page"
-DONE					"should not load user edit page if not logged in as same user"
-DONE					"should update user"
-DONE					"should not update user if not logged in as same user"
-DONE					"should destroy user if logged in as same user"
-DONE					"should destroy user if logged in as admin"
-DONE					"should destroy associated user articles" 
-DONE					"should not destroy user if not logged in as same user or admin"
+------------------------------
+Tests to implement:
 
     integration
     	create_category_test.rb
@@ -150,45 +95,26 @@ DONE					"should not destroy user if not logged in as same user or admin"
     			"reject user deletion if not same user or admin"
     	delete_user_test.rb
     	
-DONE    models
-DONE    	category_test.rb
-DONE    		Have:
-DONE          "category should be valid"
-DONE          "name should be present"
-DONE    			"name should be unique"
-DONE    			"name should not be too long"
-DONE    			"name should not be too short"
-DONE    	article_categories_test.rb
-DONE    		Have:
-DONE          "should be valid"
-DONE    			"must have article"
-DONE    			"must have category"
-DONE    	article_test.rb
-DONE    		Have:
-DONE    			"must have user"
-DONE    			"must have title"
-DONE    			"title should not be too short"
-DONE    			"title should not be too long"
-DONE    			"must have description"
-DONE    			"description cannot be too short"
-DONE    			"description cannot be too long"
-DONE    	user_test.rb
-DONE    		Need:
-DONE    			"user articles should be destroyed when user is destroyed"
-DONE    			"must have username"
-DONE    			"username must be unique"
-DONE    			"username should not be too short"
-DONE    			"username should not be too long"
-DONE    			"must have email"
-DONE    			"email must be unique"
-DONE    			"email must not be too long"
-DONE    			"email must follow regex format"
-DONE    			"must have password_digest"
-DONE    			"password is hashed"
-DONE          "user is not admin by default
-    
-    test_helper.rb
-    	sign_in_as(user)
-    		receiver an obj with user credentials specified 
-    		user must have been created and added to users table before this is called
-    		user must have the same password as the one listed in this test
+    system
+      categories_test.rb
+        Have:
+          "updating a category"
+          "destroying a category"
+        Need:
+          "creating a category
+      articles_test.rb
+        Need:
+          "creating an article"
+          "updating an article"
+          "deleting an article"
+      users_test.rb
+        Need:
+          "creating a user"
+          "updating a user"
+          "deleting a user"
+      sessions_test.rb
+        Need:
+          "logging in a user"
+          "logging out a user"
+      navbar.rb
+        Not going to write these out. Just make sure all the links work as expected and are clickable

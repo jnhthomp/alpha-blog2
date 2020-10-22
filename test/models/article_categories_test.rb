@@ -11,7 +11,7 @@ class ArticleCategoriestest < ActiveSupport::TestCase
     # Create and save new @article object for @article_category
     create_article(@user)
     # Create and save new @category object for @article_category
-    create_category
+    @category = create_category
     # Create @article_category to test on
     @article_category = ArticleCategory.new(article_id: @article, category_id: @category)
   end

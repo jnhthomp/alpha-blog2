@@ -6,8 +6,7 @@ class CreateCategoryTest < ActionDispatch::IntegrationTest
   # Setup for tests
   setup do
     # Create an admin user account
-    @admin_user = User.create(username: "testadmin", email: "testadmin@email.com",
-                              password: "testadminpass", admin: true)
+    @admin_user = create_new_user(username: "admin_user", admin: true)
     # Sign in the created admin 
     # Only admins should be able to create categories so we must use an admin account
     sign_in_as(@admin_user)

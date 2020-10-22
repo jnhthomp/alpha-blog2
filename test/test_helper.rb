@@ -22,25 +22,22 @@ class ActiveSupport::TestCase
   def create_new_user(username: "user", email_suffix: "@email.com", password: "password", admin: nil)
     username = username + "#{User.count + 1}"
     email = username + email_suffix
-
     return User.create(username: username, email: email, password: password, admin: admin)
-
-    
   end
 
   # Create a new @article and save to test db
   def create_article(user)
     # Set attributes for new article
-    @article = Article.new(title: "Article Title", description: "Article description", user: user)
+    return Article.create(title: "Article Title", description: "Article description", user: user)
     # Save new article to test db
-    @article.save
+    # @article.save
   end
 
   # Create a new @category and save to test db
   def create_category
     # Set attributes for new category
-    @category = Category.new(name: "Category")
+    return Category.create(name: "Category")
     # Save new category to test db
-    @category.save
+    # @category.save
   end
 end
