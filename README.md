@@ -84,14 +84,13 @@ DONE          "should update article if logged in and current user or admin"
 DONE          "should not update article if not logged in or current user or admin"
 DONE          "should destroy article if logged in and curent user or admin"
 DONE          "should not destroy article if not logged in or current user or admin"
-
-    	sessions_controller_test.rb
-				Need: 
-				  "should load new session page (login page)"
-					"should create new session w/ valid credentials"
-					"shoud not create new session w/ invalid credentials"
-					"should destroy session if user is logged in"
-					"should not destroy session if user is not logged in"
+DONE    	sessions_controller_test.rb
+DONE				Have: 
+DONE				  "should load new session page (login page)"
+DONE					"should create new session w/ valid credentials"
+DONE					"shoud not create new session w/ invalid credentials"
+DONE					"should destroy session if user is logged in"
+DONE					"should not destroy session if user is not logged in"
     	users_controller_test.rb
     	  Need:
 					index

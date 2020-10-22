@@ -2,11 +2,18 @@ class SessionsController < ApplicationController
 
   # Login page
   def new
-    
+    if logged_in?
+      flash[:alert] = "You must sign out before signing into another account"
+      return redirect_to user_path(@current_user)
+    end
   end
 
   # Create a new user session (log in a user)
   def create
+    if logged_in?
+      flash[:alert] = "Please sign out before signing into another account"
+      return redirect_to user_path(@current_user)
+    end
     # Search for a user that matches username provided in log in form
     user = User.find_by(username: params[:session][:username])
     # Check if a user with a matching username was found and the provided password was correct
