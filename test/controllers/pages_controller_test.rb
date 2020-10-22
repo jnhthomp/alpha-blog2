@@ -8,6 +8,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     @user = create_new_user
   end
 
+  #### HOME TESTS
   # Make sure root route is accessible to unregistered users
   test "should get home if not logged in" do
     # Go to the root route (pages#home)

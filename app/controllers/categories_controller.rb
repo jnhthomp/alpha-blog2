@@ -2,11 +2,10 @@ class CategoriesController < ApplicationController
   # Require a user to be admin for all categories views/actions except index and show
   before_action :require_admin, except: [:index, :show]
 
-  # Create a new category
-  def new
-    # Initialize new Category obj
-    # Will be updated from the view before @category is pushed to #create
-    @category = Category.new
+  # Load page to view list of categories
+  def index
+    # Paginate all categories in categories table
+    @categories = Category.paginate(page: params[:page], per_page: 5)
   end
 
   # Create a new category from the category from categories/new
@@ -28,24 +27,25 @@ class CategoriesController < ApplicationController
     end
   end
 
-  # Load page to view individual category
-  def show
-    # Set @category from id provided in the params when clicking a category
-    @category = Category.find(params[:id])
-    # Get and paginate a list of articles associated with the selected category
-    @articles = @category.articles.paginate(page: params[:page], per_page: 5)
-  end
-
-  # Load page to view list of categories
-  def index
-    # Paginate all categories in categories table
-    @categories = Category.paginate(page: params[:page], per_page: 5)
+  # Create a new category
+  def new
+    # Initialize new Category obj
+    # Will be updated from the view before @category is pushed to #create
+    @category = Category.new
   end
 
   # Edit categories page
   def edit
     # Set @category from id provided in the params when clicking a category
     @category = Category.find(params[:id])
+  end
+
+  # Load page to view individual category
+  def show
+    # Set @category from id provided in the params when clicking a category
+    @category = Category.find(params[:id])
+    # Get and paginate a list of articles associated with the selected category
+    @articles = @category.articles.paginate(page: params[:page], per_page: 5)
   end
 
   # Update an existing category from the edit page

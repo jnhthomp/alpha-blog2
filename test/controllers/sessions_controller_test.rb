@@ -9,7 +9,9 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     # password: "testadminpass", admin: false)
     @user2 = create_new_user
   end
-    # "should load new session page (login page)"
+
+  #### NEW TESTS
+  # "should load new session page (login page)"
   test "should load new session page (login page)" do
     # Attempt to access the login page
     get login_url
@@ -29,6 +31,9 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert flash[:alert]
   end
   
+
+
+  #### CREATE TESTS
   # Use valid login details for successful sign in
   test "should create new session w/ valid credentials" do
     # Set session params to use to post to sessions#create method
@@ -62,10 +67,11 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to user_url(@user)
     # Confirm that the flash alert was passed successfully
     assert flash[:alert]
-
-
   end
 
+
+
+  #### DESTROY TESTS
   # Destroy a user session to logout a signed in user
   test "should destroy session if user is logged in" do
     # Successfully sign a user in

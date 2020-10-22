@@ -6,29 +6,11 @@ class ArticlesController < ApplicationController
   # Require a user be assigned to an article or an admin to manipulate an article or view its edit page
   before_action :require_same_user, only:[:edit, :update, :destroy]
 
-  # Load page to view individual article
-  def show
-    
-  end
-
   # Load listing of all created articles
   def index
     # @articles will hold list of all articles (all being how many is selected for pagination)
     # functionality provided by will_paginate gem
     @articles = Article.paginate(page: params[:page], per_page: 5)
-  end
-
-  # Create new article page
-  def new
-    # Initialize new Article obj
-    # Will be updated from the view before @article is pushed to #create
-    @article = Article.new
-  end
-
-  # Edit article page
-  # receives @article from params/show page when navigated to
-  def edit
-    
   end
 
   # Create a new article from new article page
@@ -48,6 +30,24 @@ class ArticlesController < ApplicationController
       # Errors are attached to @article and rendered with shared/_errors from _form in new 
       render 'new'
     end
+  end
+
+  # Create new article page
+  def new
+    # Initialize new Article obj
+    # Will be updated from the view before @article is pushed to #create
+    @article = Article.new
+  end
+
+  # Edit article page
+  # receives @article from params/show page when navigated to
+  def edit
+    
+  end
+
+  # Load page to view individual article
+  def show
+  
   end
 
   # Update an existing article from edit page

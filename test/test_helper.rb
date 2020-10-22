@@ -18,14 +18,7 @@ class ActiveSupport::TestCase
     post login_path, params: { session: { username: user.username, password: user.password } }
   end
 
-  # Create a new @user obj and save to test db (non-admin)
-  def create_user
-    # Set attributes for new user
-    @user = User.new(username: "test_user", email: "test_user@email.com", password: "test_user_pasword", admin: false)
-    # Save new user to test db
-    @user.save
-  end
-
+  # Create a new user with default values or pass in needed arguements
   def create_new_user(username: "user", email_suffix: "@email.com", password: "password", admin: nil)
     username = username + "#{User.count + 1}"
     email = username + email_suffix

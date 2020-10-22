@@ -6,10 +6,6 @@ class UsersController < ApplicationController
   # Check that the logged in user is the same (or is an admin) as the user obj being viewed/manipulated 
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
-  def index
-    @users = User.paginate(page: params[:page], per_page: 5)
-  end
-
   # Signup page for new user
   # Loads users/new.html.erb
   def new
@@ -19,6 +15,10 @@ class UsersController < ApplicationController
     end
     # Create an instance variable for a new User object to register
     @user = User.new
+  end
+
+  def index
+    @users = User.paginate(page: params[:page], per_page: 5)
   end
 
   # Create a new user to the users table from the signup form (user#new)
@@ -46,17 +46,17 @@ class UsersController < ApplicationController
     end
   end
 
+  # View edit page for a user
+  def edit
+
+  end
+
   # View individual user page
   def show
     # List of articles created by the user (paginated with will_paginate gem)
     @articles = @user.articles.paginate(page: params[:page], per_page: 5)
   end
 
-  # View edit page for a user
-  def edit
-
-  end
-  
   # Update user details
   def update
     # Attempt to update @user with details provided from edit page
@@ -82,8 +82,6 @@ class UsersController < ApplicationController
     flash[:notice] = "Account and all associated articles have been successfully deleted"
     redirect_to articles_path
   end
-
-
 
   private
 

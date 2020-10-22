@@ -7,12 +7,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @user = create_new_user
   end
 
-  # Test route for users index page
-  test "should show users index page" do
-    get users_url
-    assert_response :success
-  end
-  
+  #### NEW TESTS
   # Test route for new user signup page
   test "should show new user signup page" do
     get signup_url
@@ -31,7 +26,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil flash[:alert]
   end
 
+
+
+  #### INDEX TESTS
+  # Test route for users index page
+  test "should show users index page" do
+    get users_url
+    assert_response :success
+  end
   
+  #### CREATE TESTS
   # Create a new user
   test "should create a new user" do
     # Check difference in user count after posting a new user to the create user route (should increase by 1)
@@ -62,25 +66,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil flash[:alert]
   end
 
-  # Test user show page route
-  test "should load user show page" do
-    # user show page needs a user.id to display a user
-    get user_url(@user)
-    assert_response :success
-  end
-
-  # Confirm that user articles are available to #show method
-  test "articles written by user should be available" do
-    # Create an article for the user page
-    create_article(@user)
-    #  Fetch the users page use #show method
-    get user_url(@user)
-    # Confirm page was reached
-    assert_response :success
-    # Confirm that @articles in #show method was created and contains the created article
-    assert_not_nil assigns(:articles)
-  end
-
+  #### EDIT TESTS
   # Test user edit page route
   test "should load user edit page" do
     # Login as a user (edit page should not be reachable otherwise)
@@ -106,6 +92,31 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert flash[:alert]
   end
 
+
+
+  #### SHOW TESTS
+  # Test user show page route
+  test "should load user show page" do
+    # user show page needs a user.id to display a user
+    get user_url(@user)
+    assert_response :success
+  end
+
+  # Confirm that user articles are available to #show method
+  test "articles written by user should be available" do
+    # Create an article for the user page
+    create_article(@user)
+    #  Fetch the users page use #show method
+    get user_url(@user)
+    # Confirm page was reached
+    assert_response :success
+    # Confirm that @articles in #show method was created and contains the created article
+    assert_not_nil assigns(:articles)
+  end
+
+
+
+  #### UPDATE TESTS
   # Test updating a user
   test "should update user" do
     # Login as a user
@@ -128,6 +139,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not User.find(@user.id).username == "changed_user"
   end
 
+
+
+  #### DESTROY TESTS
   # Test that users are able to delete their own profiles
   test "should destroy user if logged in as same user" do
     # Login as a user

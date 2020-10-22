@@ -12,9 +12,6 @@ Also feel free to check out the sitemap that is included in the [Alpha-Blog-Map.
 ## TODO
 (Sorted by shorter to longer tasks)
 
-* Comment controller tests to add organization by method
-  * try using order of rails routes as order inside controller and tests
-
 * make sure tests are using assert_difference for create and destroy tests
 
 * update require_same_user in controllers to create a new method called require_same_user_or_admin and potentially require_admin
@@ -33,6 +30,8 @@ Also feel free to check out the sitemap that is included in the [Alpha-Blog-Map.
 * Integrate ActionCable for a chat/messaging section
 
 * Add user password requirements
+
+* Update tests to use sign_in_as(@user) instead of post login_url(parms: {etc...})
 
 * Check that all possible tests are present
   * Move as much out of setup and into test_helper as possible

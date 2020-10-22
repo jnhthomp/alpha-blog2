@@ -16,16 +16,29 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     create_article(@user)
   end
 
-  # Show a specific article
-  test "should show article show page" do
-    get article_url(@article)
-    assert_response :success
-  end
-
+  #### INDEX TESTS
   # Show article index page
   test "should show article index page" do
     get articles_url
     assert_response :success
+  end
+
+
+
+  #### NEW TESTS
+  # Create new article method for logged in users
+  test "should create new article if logged in" do
+    sign_in_as(@user)
+    assert_difference('Article.count', 1) do
+      post articles_url, params: { article: { title: "Creating article", description: "Creating test article"} }
+    end
+  end
+
+  # Block create new article method for unregistered users
+  test "should not create a new article if not logged in" do
+    assert_no_difference('Article.count') do
+      post articles_url, params: { article: { title: "Creating article", description: "Creating test article", user: @user} }
+    end
   end
 
   # Show new article page
@@ -43,6 +56,9 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
+
+
+  #### EDIT TESTS
   # Show the edit page for logged in users
   test "should show article edit page if logged in as @article.user" do
     # Sign in as @article.user so page is available
@@ -74,21 +90,18 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  # Create new article method for logged in users
-  test "should create new article if logged in" do
-    sign_in_as(@user)
-    assert_difference('Article.count', 1) do
-      post articles_url, params: { article: { title: "Creating article", description: "Creating test article"} }
-    end
-  end
 
-  # Block create new article method for unregistered users
-  test "should not create a new article if not logged in" do
-    assert_no_difference('Article.count') do
-      post articles_url, params: { article: { title: "Creating article", description: "Creating test article", user: @user} }
-    end
-  end
 
+  #### SHOW TESTS
+  # Show a specific article
+  test "should show article show page" do
+    get article_url(@article)
+    assert_response :success
+  end
+  
+
+
+  #### UPDATE TESTS
   # Allow article update for logged in @article.user
   test "should update article if logged in and current user" do
     # Store initial title for comparison
@@ -131,6 +144,9 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert Article.find(@article.id).title == initial_title
   end
 
+
+  
+  #### DESTROY TESTS
   # Allow users to delete their own articles
   test "should destroy article if logged in and current user" do
     sign_in_as(@user)
