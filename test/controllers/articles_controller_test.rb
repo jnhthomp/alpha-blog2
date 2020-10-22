@@ -4,12 +4,10 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   
   setup do
     # Create new regular user
-    # @user = User.create(username: "testuser", email: "testuser@email.com", password: "testadminpass", admin: false)
     @user = create_new_user
-    # @user2 = User.create(username: "testuser2", email: "testuser2@email.com", password: "testadminpass", admin: false)
+    # Create second user
     @user2 = create_new_user
     # Create new admin user
-    # @admin_user = User.create(username: "adminuser", email: "adminuser@email.com", password: "testadminpass", admin: true)
     @admin_user = create_new_user(admin: true)
     # Create an article written by @user
     # This is because admin should be able to modify even though @user_admin is not assigned to it

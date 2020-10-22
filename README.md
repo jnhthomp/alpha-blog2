@@ -12,7 +12,12 @@ Also feel free to check out the sitemap that is included in the [Alpha-Blog-Map.
 ## TODO
 (Sorted by shorter to longer tasks)
 
-* make sure tests are using assert_difference for create and destroy tests
+* Clean out old commented out methods that were replaced by create_new_user and sign_in_as(user)
+
+* Add tests for User and Articles models, controllers, functions
+
+* Use about page to show project info (use this README as a guide and add link to jumbotron)
+	* Match look of page with article cards
 
 * update require_same_user in controllers to create a new method called require_same_user_or_admin and potentially require_admin
   * this will make it so there are 4 levels of permissions that each page/action can have
@@ -31,21 +36,10 @@ Also feel free to check out the sitemap that is included in the [Alpha-Blog-Map.
 
 * Add user password requirements
 
-* Update tests to use sign_in_as(@user) instead of post login_url(parms: {etc...})
-
 * Check that all possible tests are present
   * Move as much out of setup and into test_helper as possible
-  * Update helper method functions to set defaults in the function
-  * Allow these defaults to be overwritten when the method is called by providing a key/value
-  * remove .save from 'create' helper methods and add where necessary
-    * replace w/ .create if you want to keep the functionality?
-    * Figure out how you want to handle creating users and signing in in tests
-
-* Add tests for User and Articles models, controllers, functions
 
 * Get rid of bootstrap and replace with custom html/css/js
-
-* Use about page to show project info (use this README as a guide and add link to jumbotron)
 
 ### Considerations:
 
@@ -143,6 +137,7 @@ DONE					"should not destroy user if not logged in as same user or admin"
     			"get existing article and reject invalid update"
     			"delete existing article"
     			"reject article deletion if not same user or admin"
+			list_articles_test.rb
     	create_user_test.rb
     		need:
     			"Get new user form and create new user"
@@ -153,7 +148,7 @@ DONE					"should not destroy user if not logged in as same user or admin"
     			"get existing user and reject invalid update"
     			"delete existing user"
     			"reject user deletion if not same user or admin"
-    	
+    	delete_user_test.rb
     	
 DONE    models
 DONE    	category_test.rb

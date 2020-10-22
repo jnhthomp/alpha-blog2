@@ -17,7 +17,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   # Test that logged in users cannot access the new user signup page
   test "new user page should not be available to logged in users" do
     # Log in as a user
-    post login_url, params: { session: { username: @user.username, password: @user.password } }
+    sign_in_as(@user)
     # Attempt to access new user signup page
     get signup_url
     # Confirm that user is redirected to correct page
@@ -35,12 +35,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
   
+
+  
   #### CREATE TESTS
   # Create a new user
   test "should create a new user" do
     # Check difference in user count after posting a new user to the create user route (should increase by 1)
     assert_difference('User.count', 1) do
-      post users_url, params: { user: { username: "newuser", email: "newuser@email.com", password: "testpassword" } }  
+      @new_user = create_new_user
     end
   end
 
@@ -48,14 +50,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should not create a new user if user obj is invalid" do
     # Check difference in user count after attempting to post a new user w/ create user route (should not change)
     assert_no_difference('User.count') do
-      post users_url, params: { user: { username: "", email: "", password: "" } }
+      @invalid_user = create_new_user(username: "", password: "")
     end
   end
 
   # Test that logged in users cannot access users#create method
   test "should not allow create a new user method if a user is already logged in" do
     # Log in as a user
-    post login_url, params: { session: { username: @user.username, password: @user.password } }
+    sign_in_as(@user)
     # Confirm there is no difference in user count after attempting to create a new user
     assert_no_difference('User.count') do
       post users_url, params: { user: { username: "newuser", email: "newuser@email.com", password: "testpassword" } }  
@@ -66,11 +68,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil flash[:alert]
   end
 
+
+
   #### EDIT TESTS
   # Test user edit page route
   test "should load user edit page" do
     # Login as a user (edit page should not be reachable otherwise)
-    post login_url, params: { session: { username: @user.username, password: @user.password } }
+    sign_in_as(@user)
     # Edit page url needs a user.id to display a user to edit
     get edit_user_url(@user)
     assert_response :success
@@ -81,7 +85,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     # Create a second user to login as
     @user2 = create_new_user
     # Login as second user
-    post login_url, params: { session: { username: @user2.username, password: @user2.password } }
+    sign_in_as(@user2)
     # Confirm login was successful (personal profile loads on successful sign in)
     assert_redirected_to user_url(@user2)
     # Try to get edit page for different user
@@ -120,7 +124,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   # Test updating a user
   test "should update user" do
     # Login as a user
-    post login_url, params: { session: { username: @user.username, password: @user.password} }
+    sign_in_as(@user)
     # Attempt to update logged in user's profile
     patch user_url(@user), params: { user: { username: "changed_user" } }
     # Check the db to confirm that the save was successful
@@ -132,7 +136,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     # Create a new second user
     @user2 = create_new_user
     # Login as second user
-    post login_url, params: { session: { username: @user2.username, password: @user2.password } }
+    sign_in_as(@user2)
     # Attempt to update different user as second user
     patch user_url(@user), params: { user: { username: "changed_user" } }
     # Check the db to confirm that save was not successful
@@ -145,7 +149,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   # Test that users are able to delete their own profiles
   test "should destroy user if logged in as same user" do
     # Login as a user
-    post login_url, params: { session: { username: @user.username, password: @user.password } }
+    sign_in_as(@user)
     # Check for difference in User.count before and after attempting to delete the logged in user profile
     #   (should be -1)
     assert_difference('User.count', -1) do
@@ -164,7 +168,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     # Create an admin user
     @admin_user = create_new_user(username: "admin_user", admin: true)
     # Login as the admin user
-    post login_url, params: { session: { username: @admin_user.username, password: @admin_user.password } }
+    sign_in_as(@admin_user)
     # Check for difference between User.count before and after attempting to delete a different users profile
     #   (should be -1)
     assert_difference('User.count', -1) do
@@ -175,7 +179,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   # Confirm that user articles are also deleted on user profile deletion
   test "should destroy associated user articles" do
     # Login as a user
-    post login_url, params: { session: { username: @user.username, password: @user.password } }
+    sign_in_as(@user)
     # Create an article for the user
     create_article(@user)
     # Check difference in Article.count before and after deleting the logged in user's profile
@@ -190,7 +194,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     # Create a new user
     @user2 = create_new_user
     # Log in new user
-    post login_url, params: { session: { username: @user2.username, password: @user2.password } }
+    sign_in_as(@user2)
     # Confirm that User.count does not change after attempting to delete a different user profile
     assert_no_difference('User.count') do
       delete user_url(@user)
