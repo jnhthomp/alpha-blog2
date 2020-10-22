@@ -15,7 +15,7 @@ class ActiveSupport::TestCase
   # Password must be hardcoded here since it is hashed and we cannot enter the hash as a valid password
   def sign_in_as(user)
     # use the following as credentials for login user is defined in setup method for the test
-    post login_path, params: { session: { username: user.username, password: "testadminpass" } }
+    post login_path, params: { session: { username: user.username, password: user.password } }
   end
 
   # Create a new @user obj and save to test db (non-admin)
@@ -24,6 +24,15 @@ class ActiveSupport::TestCase
     @user = User.new(username: "test_user", email: "test_user@email.com", password: "test_user_pasword", admin: false)
     # Save new user to test db
     @user.save
+  end
+
+  def create_new_user(username: "user", email_suffix: "@email.com", password: "password", admin: nil)
+    username = username + "#{User.count + 1}"
+    email = username + email_suffix
+
+    return User.create(username: username, email: email, password: password, admin: admin)
+
+    
   end
 
   # Create a new @article and save to test db

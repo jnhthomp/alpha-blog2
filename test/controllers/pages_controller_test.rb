@@ -4,7 +4,8 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     # Create a new user account to use for signing in
-    @user = User.create(username: "test_user", email: "test_user@email.com", password: "testadminpass", admin: false)
+    # @user = User.create(username: "test_user", email: "test_user@email.com", password: "testadminpass", admin: false)
+    @user = create_new_user
   end
 
   # Make sure root route is accessible to unregistered users

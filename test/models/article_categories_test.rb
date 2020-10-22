@@ -7,7 +7,7 @@ class ArticleCategoriestest < ActiveSupport::TestCase
     # User, article, and category obj all need to be created for @article_category
     
     # Create and save new @user object so @article can be created
-    create_user
+    @user = create_new_user
     # Create and save new @article object for @article_category
     create_article(@user)
     # Create and save new @category object for @article_category

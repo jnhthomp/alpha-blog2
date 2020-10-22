@@ -13,6 +13,18 @@ Also feel free to check out the sitemap that is included in the [Alpha-Blog-Map.
 (Sorted by shorter to longer tasks)
 
 * Comment controller tests to add organization by method
+  * try using order of rails routes as order inside controller and tests
+
+* make sure tests are using assert_difference for create and destroy tests
+
+* update require_same_user in controllers to create a new method called require_same_user_or_admin and potentially require_admin
+  * this will make it so there are 4 levels of permissions that each page/action can have
+    * unregistered users
+    * registered users
+    * registered users or admins
+    * admins only
+
+* move new logged_in? checks in controllers to before_actions
 
 * edit 404 files for custom 404 pages? (public folder)
 
@@ -91,32 +103,23 @@ DONE					"should create new session w/ valid credentials"
 DONE					"shoud not create new session w/ invalid credentials"
 DONE					"should destroy session if user is logged in"
 DONE					"should not destroy session if user is not logged in"
-    	users_controller_test.rb
-    	  Need:
-					index
-					"should show users index page"
-					new
-					"should show new user signup page"
-					"new user page should not be available to logged in users"
-						# This one is a pick or choose. I don't think the app is broken leaving it as is. If a new user is created when another user is already logged in it will simply overwrite the session[:user_id] resulting in the original user being logged out and the new user being logged in instead
-					create
-					"should create a new user"
-					"should not create a new user if user obj is invalid"
-					show
-					"should load user show page"
-					"articles written by user should be available"
-					edit
-					"should load user edit page"
-					"should not load user edit page if not logged in as same user"
-					update
-					"should update user"
-					"should not update user if not logged in as same user"
-					destroy
-					"should destroy user if logged in as same user"
-					"should destroy user if logged in as admin"
-					"should destroy associated user articles" 
-						#Is this better in model test?
-					"should not destroy user if not logged in as same user or admin"
+DONE    	users_controller_test.rb
+DONE    	  Have:
+DONE					"should show users index page"
+DONE					"should show new user signup page"
+DONE					"new user page should not be available to logged in users"
+DONE					"should create a new user"
+DONE					"should not create a new user if user obj is invalid"
+DONE					"should load user show page"
+DONE					"articles written by user should be available"
+DONE					"should load user edit page"
+DONE					"should not load user edit page if not logged in as same user"
+DONE					"should update user"
+DONE					"should not update user if not logged in as same user"
+DONE					"should destroy user if logged in as same user"
+DONE					"should destroy user if logged in as admin"
+DONE					"should destroy associated user articles" 
+DONE					"should not destroy user if not logged in as same user or admin"
 
     integration
     	create_category_test.rb

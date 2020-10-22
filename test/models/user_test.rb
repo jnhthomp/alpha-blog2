@@ -4,7 +4,7 @@ class Usertest < ActiveSupport::TestCase
 
   def setup
     # Create and save @user obj to test db
-    create_user
+    @user = create_new_user
     # Create and save @article obj to test db with @user assigned
     create_article(@user)
   end
@@ -38,6 +38,7 @@ class Usertest < ActiveSupport::TestCase
   test "username must be unique regardless of capitalization" do
     # Create a new user with the same username as the already saved @user
     # Change the new user username to capital to test that they are not case sensitive
+    #   This does not use create_new_user because create_new_user will always generate a unique username
     @user2 = User.new(username: @user.username.upcase!, password: "uniquepassword", email: "unique@email.com", admin: false)
     assert_not @user2.valid?
   end
@@ -68,6 +69,7 @@ class Usertest < ActiveSupport::TestCase
   test "email must be unique regardless of capitalization" do
     # Create a new user with the same email as the already saved @user
     # Change the new user email to capital to test that they are not case sensitive
+    #   This does not use create_new_user because create_new_user will always generate a unique username
     @user2 = User.new(username: "user2", password: "uniquepassword", email: @user.email.upcase!, admin: false )
     assert_not @user2.valid?
   end

@@ -13,12 +13,21 @@ class UsersController < ApplicationController
   # Signup page for new user
   # Loads users/new.html.erb
   def new
+    if logged_in?
+      flash[:alert] = "You must log out before creating a new user profile"
+      return redirect_to @current_user
+    end
     # Create an instance variable for a new User object to register
     @user = User.new
   end
 
   # Create a new user to the users table from the signup form (user#new)
   def create
+    if logged_in?
+      flash[:alert] = "You must log out before creating a new user profile"
+      return redirect_to @current_user
+    end
+
     # add the whitelisted user_params to @user
     @user = User.new(user_params)
     # Try to save the @user object
@@ -71,7 +80,7 @@ class UsersController < ApplicationController
     session[:user_id] = nil if @user == current_user
     # flash a notice confirming successful deletion and redirect to homepage
     flash[:notice] = "Account and all associated articles have been successfully deleted"
-    redirect_to root_path
+    redirect_to articles_path
   end
 
 

@@ -2,10 +2,12 @@ require 'test_helper'
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = User.create(username: "testuser", email: "testuser@email.com",
-      password: "testadminpass", admin: false)
-    @user2 = User.create(username: "testuser2", email: "testuser2@email.com",
-    password: "testadminpass", admin: false)
+    # @user = User.create(username: "testuser", email: "testuser@email.com",
+    #   password: "testadminpass", admin: false)
+    @user = create_new_user
+    # @user2 = User.create(username: "testuser2", email: "testuser2@email.com",
+    # password: "testadminpass", admin: false)
+    @user2 = create_new_user
   end
     # "should load new session page (login page)"
   test "should load new session page (login page)" do

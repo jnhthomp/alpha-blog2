@@ -4,7 +4,7 @@ class Articletest < ActiveSupport::TestCase
   
   def setup
     # Create and save new @user object so @article can be created
-    create_user
+    @user = create_new_user
     # Create and save new @article object for @article_category
     create_article(@user)
   end

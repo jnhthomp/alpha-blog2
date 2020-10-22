@@ -8,8 +8,9 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     # Create a category (otherwise none will exist)
     @category = Category.create(name: "sports")
     # Create an admin user (so they can manipulate categories)
-    @admin_user = User.create(username: "testadmin", email: "testadmin@email.com",
-                              password: "testadminpass", admin: true)
+    # @admin_user = User.create(username: "testadmin", email: "testadmin@email.com",
+                              # password: "testadminpass", admin: true)
+    @admin_user = create_new_user(admin: true, password: "testadminpass")
   end
 
   # Ensure categories/index route is correct
