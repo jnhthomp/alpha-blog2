@@ -128,6 +128,13 @@ Tests to implement:
         Not going to write these out. Just make sure all the links work as expected and are clickable
 ```
 
+## Lessons Learned
+- General Ruby on Rails Application structure and creation
+- Creating Databases and performing CRUD operations
+- Styling Applications in Rails
+- User association and authentification
+- Database relationships (1 to 1, 1 to many, many to many etc.)
+
 ## Resources
 [The Complete Ruby on Rails Developer Course | Mashrur Hossain](https://www.udemy.com/share/101swc3@cCS4WWfsOKJUKdztJUfQSzLOScz48QRpSUl3gGSck2ewcS8hzH0dt-UoQzgIyZAm/)
 
